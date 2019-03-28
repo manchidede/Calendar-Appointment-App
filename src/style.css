@@ -1,0 +1,281 @@
+table {
+    color: #F0FFFF;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 1.2rem;
+    table-layout: fixed;
+}
+
+td {
+    padding: 0.5rem 0;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.active {
+    background-color: #008000;
+}
+
+.inactive {
+    background-color: #9ab785 !important;
+}
+
+.empty {
+    background-color: #d6d6d6;
+}
+
+.calendar td:hover:not(.empty) {
+    cursor: pointer;
+    background-color: #095265;
+}
+
+.inner-wrapper .text,
+.inner-wrapper input[type=submit],
+.inner-wrapper .datepicker {
+    display: block;
+    margin: 0.5rem auto;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.inner-wrapper .text,
+.inner-wrapper .datepicker {
+    width: 90%;
+    padding: 0.5rem 0.8rem;
+}
+
+.inner-wrapper .text {
+    box-shadow: 0 0 9px #bbbbbb;
+}
+
+.inner-wrapper .datepicker {
+    background-color: #dddddd;
+    color: green;
+}
+
+.inner-wrapper .text:focus,
+.inner-wrapper .datepicker:focus {
+    outline: unset;
+    box-shadow: 0 0 9px #796969;
+}
+
+.inner-wrapper input[type=submit] {
+    width: 100%;
+    background-color: #008000;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+.inner-wrapper input[type=submit]:hover,
+.appointment-btn > button:first-child:hover {
+    background-color: white;
+    color: green;
+    box-shadow: 0 0 8px green inset;
+}
+
+.alert-wrapper {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: #d2e2d2d1;
+}
+
+.inner-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 25%;
+    text-align: center;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.inner-wrapper span {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    font-size: 1.4rem;
+}
+
+.inner-wrapper span:hover {
+    cursor: pointer;
+}
+
+td.inactive:hover {
+    background-color: #778e67;
+}
+
+.appointment-btn > button:first-child,
+.appointment-btn > button:last-child {
+    color: white;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    font-size: 1rem;
+    width: 40%;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.appointment-btn > button:first-child {
+    background-color: #008000;
+    border-radius: 10px 0 0 10px;
+}
+
+.appointment-btn > button:last-child {
+    background-color: #d42525;
+    border-radius: 0 10px 10px 0;
+}
+
+.appointment-btn > button:last-child:hover {
+    background-color: white;
+    color: #d42525;
+    box-shadow: 0 0 8px #d42525 inset;
+}
+
+.appointment-wrapper, form {
+    display: none;
+}
+
+form {
+    position: relative;
+}
+
+form a {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+form tbody > tr:nth-child(2) > td {
+    padding: 0 0.3rem;
+    font-size: 1rem;
+}
+
+.datepickerdropdown {
+    background: unset;
+    border: unset;
+    box-shadow: 0 0 4px #888;
+    background-color: green;
+}
+
+.datepickerdropdown input[type=button]:hover {
+    cursor: pointer;
+}
+
+.input-error {
+    border: solid thin red !important;
+    box-shadow: 0 0 4px red !important;;
+}
+
+#calendar > p:first-child, .warning {
+    margin: 0;
+    font-size: 0.8rem;
+    display: none;
+}
+
+#calendar > p:first-child {
+    color: red;
+}
+
+.create {
+    margin-bottom: 0.8rem;
+    border: unset;
+    height: 50px;
+    padding: 8px 22px;
+    font-family: Sarala, serif;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    transition: all .3s;
+    border: 0 solid rgb(232, 196, 160);
+    border-radius: 25px;
+    color: #fff;
+    background-color: #61ce2f;
+    box-shadow: 0 10px 30px 0 rgb(232, 196, 160);
+    background-image: linear-gradient(10deg, #61ce2f, rgb(183, 233, 179));
+}
+
+h2 {
+    text-align: center;
+    background: -webkit-linear-gradient(#69d248, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.7rem;
+}
+
+.create:hover {
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+.main {
+    width: 80%;
+    margin: 2rem auto;
+}
+
+.current-date {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #095265;
+}
+
+.warning {
+    text-align: left;
+    color: #ad2a09;
+}
+
+.d-none {
+    display: none;
+}
+
+.show {
+    animation: show 0.6s;
+    display: block;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hide {
+    animation: hide 0.6s;
+}
+
+@keyframes hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 280px) {
+    .create {
+        height: 40px;
+        padding: 0.4rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
