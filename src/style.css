@@ -33,18 +33,14 @@ td {
 }
 
 .inner-wrapper .text,
-.inner-wrapper input[type=submit],
+.inner-wrapper button[type=submit],
 .inner-wrapper .datepicker {
     display: block;
     margin: 0.5rem auto;
     border: none;
     transition: all 0.2s ease;
-}
-
-.inner-wrapper .text,
-.inner-wrapper .datepicker {
     width: 90%;
-    padding: 0.5rem 0.8rem;
+    padding: 0.5rem;
 }
 
 .inner-wrapper .text {
@@ -62,16 +58,15 @@ td {
     box-shadow: 0 0 9px #796969;
 }
 
-.inner-wrapper input[type=submit] {
-    width: 100%;
+.inner-wrapper button[type=submit] {
     background-color: #008000;
     color: white;
     font-size: 1.1rem;
-    padding: 0.5rem 0;
     cursor: pointer;
+    width: 95%;
 }
 
-.inner-wrapper input[type=submit]:hover,
+.inner-wrapper button[type=submit]:hover,
 .appointment-btn > button:first-child:hover {
     background-color: white;
     color: green;
@@ -265,6 +260,11 @@ h2 {
     }
     to {
         opacity: 0;
+    }
+}
+@media (max-width: 320px){
+    .inner-wrapper{
+        width: 80%;
     }
 }
 

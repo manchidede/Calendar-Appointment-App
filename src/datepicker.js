@@ -2,10 +2,13 @@ const dateInput = document.querySelector('.datepicker');
 const warning = document.querySelector('.warning');
 const p = document.querySelector('#calendar > p');
 const checkBox = document.querySelector('input[type=checkbox]');
-const submitInput = document.querySelector('input[type=submit]');
+// const submitInput = document.querySelector('input[type=submit]');
+const submitInput = document.querySelector('button[type=submit]');
 const monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
     'August', 'September', 'October', 'November', 'December'];
-let now, selectedTime, curObj;
+let now, selectedTime, curObj, dateMatch;
+const pastDateMsg = "Date must not be in the past";
+const formatMsg = "Date field must be in format dd-mm-yyyy";
 
 /**
  * Creating Appointment Object
@@ -90,17 +93,10 @@ const chooseDate = e => {
     /**
      * Check if the time is in the past
      */
-    if (now > selectedTime) {
-        dateInput.classList.add('input-error');
-        p.style.display = 'block';
-        warning.style.display = 'none';
-        submitInputToggle(false);
-        return;
-    } else {
-        submitInputToggle();
-        dateInput.classList.remove('input-error');
-        p.style.display = 'none';
-    }
+    dateMatch = true;
+    handleError(now > selectedTime, "Date must not be in the past");
+    if(now > selectedTime) return;
+
     /**
      * check if appointment exists for the current date
      */

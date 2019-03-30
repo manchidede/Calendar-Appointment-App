@@ -154,6 +154,8 @@ document.querySelector('.create').addEventListener('click', () => {
  */
 form.addEventListener('submit', e => {
     e.preventDefault();
+    // console.log("Save");
+    // return;
     if (now > selectedTime) return;
     if (appointmentExist(dateInput.value) && !checkBox.checked) return;
     submitInput.disabled = true;
@@ -210,6 +212,44 @@ dateInput.addEventListener('focus', () => {
         datepickerD = document.querySelector('.datepickerdropdown');
     }
 });
+
+/**
+ * Date validation
+ */
+dateInput.addEventListener('focusout', () => {
+    if(dateMatch){
+        let isError = !parseDate(dateInput.value);
+        handleError(isError, formatMsg);
+        if(!isError){
+            let dateArr = dateInput.value.split('-');
+            selectedTime = new Date(`${dateArr[1]}/${dateArr[0]}/${dateArr[2]}`);
+            handleError(new Date() > selectedTime, pastDateMsg);
+        }
+    }
+});
+
+dateInput.addEventListener('input', () => {
+    dateMatch = true;
+});
+
+const handleError = (errorExists, message) => {
+    if(errorExists){
+        dateInput.classList.add('input-error');
+        p.innerHTML = message;
+        p.style.display = 'block';
+        warning.style.display = 'none';
+        submitInputToggle(false);
+    } else {
+        submitInputToggle();
+        dateInput.classList.remove('input-error');
+        p.style.display = 'none';
+    }
+};
+
+function parseDate(str) {
+    var m = str.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+    return (m) ? new Date(m[3], m[2]-1, m[1]) : null;
+}
 
 window.onload = () => {
     document.querySelector('.datepickershow').style.display = 'none';
